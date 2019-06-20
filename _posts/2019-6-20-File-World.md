@@ -20,7 +20,7 @@ In this example, we test `scipy` and `h5py` with a huge random matrix. Here, we 
 import numpy as np
 a = np.random.rand(10000, 10000)
 ```
-## 1.1: scipy \cross .mat
+## 1.1: scipy $\times$ .mat
 First, we use `scipy` to store the matrix in the format of <strong>.mat</strong>
 ```python
 import scipy.io as sio
