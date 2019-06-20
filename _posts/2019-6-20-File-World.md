@@ -39,19 +39,19 @@ with h5py.File('h5file.h5', 'w') as hf:
     hf.create_dataset('elem1', data=a)
 ```
 
-~~~~
+```ccs
 ls -lh h5file.h5
-~~~~
+```
 
 
 we get the size 763M with the command `ls -lh`
 
-```ruby
+```python
 with h5py.File('h5file2.h5', 'w') as hf:
     hf.create_dataset('elem1', data=a, compression='gzip', compression_opts=9)
 ```
 check the size turn out 720M
-```javascript
+```python
 with h5py.File('h5file3.h5', 'w') as hf:
     hf.create_dataset('elem1', data=a, compression='gzip', compression_opts=4)
 ```
