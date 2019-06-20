@@ -6,7 +6,7 @@ header-img: img/
 
 The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [ on GitHub.
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+
 ## Introduction
 
 we want to compare the compression efficiency and information loss of h5py and scipy. 
@@ -17,7 +17,7 @@ In this example, we test `scipy` and `h5py` with a huge random matrix. Here, we 
 import numpy as np
 a = np.random.rand(10000, 10000)
 ```
-## 1.1: scipy $\times$ .mat
+## 1.1: scipy <img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="$\times$" /> .mat
 First, we use `scipy` to store the matrix in the format of <strong>.mat</strong>
 ```python
 import scipy.io as sio
