@@ -21,7 +21,7 @@ import numpy as np
 a = np.random.rand(10000, 10000)
 ```
 ## scipy
-<p>First, we use `scipy` to store the matrix in the format of <font color='red' size=13>.mat</font></p>
+First, we use `scipy` to store the matrix in the format of <strong>.mat</strong>
 ```python
 import scipy.io as sio
 sio.savemat('matfile.mat', {'elem1':a})
