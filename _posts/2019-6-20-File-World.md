@@ -17,7 +17,7 @@ In this example, we test `scipy` and `h5py` with a huge random matrix. Here, we 
 import numpy as np
 a = np.random.rand(10000, 10000)
 ```
-## 1.1: scipy &#x2718; .mat
+## 1.1: scipy &#x2716; .mat
 #<img src="https://latex.codecogs.com/svg.latex?$\Large&space;\times$" title="$\times$" />
 First, we use `scipy` to store the matrix in the format of <strong>.mat</strong>
 ```python
