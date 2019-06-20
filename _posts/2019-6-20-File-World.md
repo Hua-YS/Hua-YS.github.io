@@ -27,7 +27,7 @@ import scipy.io as sio
 sio.savemat('matfile.mat', {'elem1':a})
 ```
 
-After storing completed, let's check the size of the produced .mat file
+After the process completed, let's check the size of the produced .mat file
 ```ccs
 ls -lh matfile.mat
 ```
