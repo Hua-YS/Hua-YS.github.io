@@ -9,6 +9,8 @@ The easiest way to make your first post is to edit this one. Go into /_posts/ an
 
 ## Introduction
 
+As a scientist, we always deal with huge
+
 we want to compare the compression efficiency and information loss of h5py and scipy. 
 
 ## Example 1: Huge random matrix
