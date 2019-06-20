@@ -21,7 +21,7 @@ a = np.random.rand(10000, 10000)
 First, we use `scipy` to store the matrix in the format of <strong>.mat</strong>
 ```python
 import scipy.io as sio
-sio.savemat('matfile.mat', {'elem1':a})
+sio.savemat('matfile.mat', {'elem':a})
 ```
 
 After the process completed, let's check the size of the produced .mat file
@@ -36,7 +36,7 @@ Now let's come to hdf5, and try to store matrix in the format of .h5
 ```python
 import h5py
 with h5py.File('h5file.h5', 'w') as hf:
-    hf.create_dataset('elem1', data=a)
+    hf.create_dataset('elem', data=a)
 ```
 
 ```ccs
@@ -48,23 +48,23 @@ we get the size 763M with the command `ls -lh`
 
 ```python
 with h5py.File('h5file2.h5', 'w') as hf:
-    hf.create_dataset('elem1', data=a, compression='gzip', compression_opts=9)
+    hf.create_dataset('elem', data=a, compression='gzip', compression_opts=9)
 ```
 check the size turn out 720M
 ```python
 with h5py.File('h5file3.h5', 'w') as hf:
-    hf.create_dataset('elem1', data=a, compression='gzip', compression_opts=4)
+    hf.create_dataset('elem', data=a, compression='gzip', compression_opts=4)
 ```
 size 720M, and take longer time
 ```python
 with h5py.File('h5file.h5', 'r') as hf:
-    a1 = np.array(hf['elem1'])
+    a1 = np.array(hf['elem'])
 
 with h5py.File('h5file2.h5', 'r') as hf:
-    a2 = np.array(hf['elem1'])
+    a2 = np.array(hf['elem'])
     
 with h5py.File('h5file3.h5', 'r') as hf:
-    a3 = np.array(hf['elem1'])
+    a3 = np.array(hf['elem'])
 
 np.sum(a1-a), np.sum(a2-a), numpy(a3-a)
 ```
@@ -84,18 +84,18 @@ dealing with sparse element
 ### 2.1: scipy &#xd7; .mat
 ```python
 a = np.zeros((1000, 1000), 'float32')
-sio.savemat('matfile.mat', {'elem1':a})
+sio.savemat('matfile.mat', {'elem':a})
 ```
 3.9M
 ### 2.2: h5py &#xd7; .h5
 ```python
 with h5py.File('h5file.h5', 'w') as hf:
-    hf.create_dataset('elem1', data=a)
+    hf.create_dataset('elem', data=a)
 ```
 3.9M
 ```python
 with h5py.File('h5file2.h5', 'w') as hf:
-    hf.create_dataset('elem1', data=a, compression='gzip', compression_opts=9)
+    hf.create_dataset('elem', data=a, compression='gzip', compression_opts=9)
 ```
 21K
 
