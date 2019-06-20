@@ -21,17 +21,16 @@ import numpy as np
 a = np.random.rand(10000, 10000)
 ```
 ## scipy
-First, we use `scipy` to store the matrix in the format of .mat
+First, we use `scipy` to store the matrix in the format of `.mat`
 ```python
 import scipy.io as sio
 sio.savemat('matfile.mat', {'elem1':a})
 ```
-Let's check the size of produced mat file
-
+After storing completed, let's check the size of the produced .mat file
 ```ccs
 ls -lh matfile.mat
 ```
-`763M`
+The size turns out `763M`, which is not a small number.
 
 Now let's come to hdf5, and try to store matrix in the format of .h5
 
