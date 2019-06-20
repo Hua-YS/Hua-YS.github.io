@@ -20,7 +20,7 @@ In this example, we test `scipy` and `h5py` with a huge random matrix. Here, we 
 import numpy as np
 a = np.random.rand(10000, 10000)
 ```
-## scipy
+## 1.1 scipy x .mat
 First, we use `scipy` to store the matrix in the format of <strong>.mat</strong>
 ```python
 import scipy.io as sio
@@ -33,6 +33,7 @@ ls -lh matfile.mat
 ```
 The size turns out `763M`, which is not a small number.
 
+## 1.2 h5py x .h5
 Now let's come to hdf5, and try to store matrix in the format of .h5
 
 ```python
