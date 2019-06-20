@@ -24,13 +24,13 @@ import scipy.io as sio
 sio.savemat('matfile.mat', {'elem1':a})
 ```
 
-After the process completed, let's check the size of the produced .mat file $$\times$$
+After the process completed, let's check the size of the produced .mat file
 ```ccs
 ls -lh matfile.mat
 ```
 The size turns out `763M`, which is not a small number.
 
-## 1.2: h5py x .h5
+## 1.2: h5py <img src="https://latex.codecogs.com/svg.latex?$\Large&space;\times$" title="$\times$" /> .h5
 Now let's come to hdf5, and try to store matrix in the format of .h5
 
 ```python
