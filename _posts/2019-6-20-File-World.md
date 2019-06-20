@@ -4,15 +4,9 @@ title: HDF5 v.s. MATLAB!
 header-img: img/
 ---
 
-<script type="text/javascript" async
-src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js? 
-config=TeX-MML-AM_CHTML"
-</script>
-![_config.yml]({{ site.baseurl }}/images/config.png)
-
 The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [ on GitHub.
 
-
+![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D
 ## Introduction
 
 we want to compare the compression efficiency and information loss of h5py and scipy. 
