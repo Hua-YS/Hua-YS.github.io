@@ -12,7 +12,7 @@ The easiest way to make your first post is to edit this one. Go into /_posts/ an
 we want to compare the compression efficiency and information loss of h5py and scipy. 
 
 ## Example 1: Huge random matrix
-In this example, we test `scipy` and `h5py` with a huge random matrix. Here, we create a 10000 x 10000 matrix and assign all its elements random values (0, 1).
+In this example, we test `scipy` and `h5py` with a huge 10000 x 10000 random matrix.
 ```python
 import numpy as np
 a = np.random.rand(10000, 10000)
