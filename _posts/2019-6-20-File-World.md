@@ -17,7 +17,7 @@ In this example, we test `scipy` and `h5py` with a huge random matrix. Here, we 
 import numpy as np
 a = np.random.rand(10000, 10000)
 ```
-## 1.1: scipy &#xd7; .mat
+### 1.1: scipy &#xd7; .mat
 First, we use `scipy` to store the matrix in the format of <strong>.mat</strong>
 ```python
 import scipy.io as sio
@@ -30,7 +30,7 @@ ls -lh matfile.mat
 ```
 The size turns out `763M`, which is not a small number.
 
-## 1.2: h5py &#xd7; .h5
+### 1.2: h5py &#xd7; .h5
 Now let's come to hdf5, and try to store matrix in the format of .h5
 
 ```python
@@ -80,11 +80,14 @@ np.sum(a4-a)
 
 A [sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix) is a matrix with tons of 'holes'.
 dealing with sparse element
+
+### 2.1: scipy &#xd7; .mat
 ```python
 a = np.zeros((1000, 1000), 'float32')
 sio.savemat('matfile.mat', {'elem1':a})
 ```
 3.9M
+### 2.2: h5py &#xd7; .h5
 ```python
 with h5py.File('h5file.h5', 'w') as hf:
     hf.create_dataset('elem1', data=a)
