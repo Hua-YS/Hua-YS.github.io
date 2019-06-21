@@ -80,7 +80,12 @@ np.sum(a_com4-a), np.sum(a_com9-a)
 
 不多说了，<strong>h5py用起来好嘛！</strong>
 
-等等，某Y突然想到，自己的数据集中，样本大部分为大型的稀疏矩阵，那么存储成.h5格式是不是会更节约空间呢？为此我们设计了第二个实验来验证我们的想法
+等等，那么scipy在存储.mat时是否提供了压缩功能了呢？仔细查询文档后发现，<strong>scipy也提供了压缩功能！</strong>某Y真的白用了这么久的scipy。。。自惭形愧。。。为了测试scipy的压缩效率，我们将参数`do_compression`设置为True
+```python
+sio.savemat('matfile1.mat', {'elem':a}, do_compression=True)
+```
+
+某Y突然想到，自己的数据集中，样本大部分为大型的稀疏矩阵，那么存储成.h5格式是不是会更节约空间呢？为此我们设计了第二个实验来验证我们的想法
 
 ## Experiment 2: 大型稀疏矩阵
 [稀疏矩阵](https://en.wikipedia.org/wiki/Sparse_matrix)指的是大部分元素为零的矩阵。因此在存储此类矩阵时，不同的存储方式都会采取一定的措施大幅度压缩文件体积。这里我们在极端情况，即矩阵元素全部为0，上进行不同存储方式之间的比较
