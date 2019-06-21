@@ -13,14 +13,8 @@ Unable to create xxx: Disk quota exceeded
 
 通常，由于MATLAB是科研工作者的常用工具，<strong>.mat</strong>也成了最常见的数据存储格式之一。然而，当遇到大型矩阵时，.mat究竟是不是一个最有效的存储格式呢？有没有什么更有效的存储格式呢？下面某Y通过两组实验来对比下<strong>.mat</strong>和<strong>.h5</strong>的存储效率：
 
-## Introduction
-
-As a scientist, we always deal with huge
-
-we want to compare the compression efficiency and information loss of h5py and scipy. 
-
-## Example 1: Huge random matrix
-In this example, we test `scipy` and `h5py` with a huge 10000 x 10000 random matrix.
+## Experiment 1: 大型随机矩阵
+在这个实验中， 我们着重比较的是两种不同存储格式对于大型随机矩阵的存储效率。首先，我们通过numpy创建一个10000 &#xd7; 10000的大型随机矩阵。
 ```python
 import numpy as np
 a = np.random.rand(10000, 10000)
