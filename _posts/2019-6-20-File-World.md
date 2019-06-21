@@ -113,7 +113,6 @@ sio.savemat('matfile_com.mat', {'elem':a}, do_compression=True)
 进行压缩存储得到的.mat文件为<strong>760K！！！</strong>
 
 ### 2.2: h5py &#xd7; .h5
-
 接下来我们用h5py进行压缩存储
 ```python
 with h5py.File('h5file.h5', 'w') as hf:
@@ -122,7 +121,6 @@ with h5py.File('h5file.h5', 'w') as hf:
 
 最终生成大小为1.3M的.h5文件。虽然压缩效率低于scipy，但是相较于原文件，其大小也只有最初的0.17%！
 
-1.3M 5.1s
 ### 1.3: 耗时
 在存储大型稀疏矩阵时，scipy耗时<strong>8.5</strong>秒，而h5py耗时<strong>4.9</strong>秒。可见h5py虽然存储效率低于scipy，但是却有着较高的压缩速度。
 
