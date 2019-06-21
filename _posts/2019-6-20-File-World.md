@@ -19,6 +19,8 @@ Unable to create xxx: Disk quota exceeded
 import numpy as np
 a = np.random.rand(10000, 10000)
 ```
+随后，我们将分别利用python中提供的.mat存储工具包scipy以及.h5的存储工具h5py来存储这个大型随机矩阵`a`。
+
 ### 1.1: scipy &#xd7; .mat
 First, we use `scipy` to store the matrix in the format of <strong>.mat</strong>
 ```python
