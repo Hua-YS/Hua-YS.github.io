@@ -19,7 +19,7 @@ Unable to create xxx: Disk quota exceeded
 import numpy as np
 a = np.random.rand(10000, 10000)
 ```
-随后，我们将分别利用python中提供的.mat存储工具包[scipy](https://www.scipy.org/)以及.h5的存储工具h5py来存储这个大型随机矩阵。
+随后，我们将分别利用python中提供的.mat存储工具包[scipy](https://www.scipy.org/)以及.h5的存储工具[h5py](https://www.h5py.org/)来存储这个大型随机矩阵。
 
 ### 1.1: .mat &#xd7; scipy
 这里我们首先导入scipy并利用其中的[savemat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.savemat.html)函数进行存储。存储的文件名为<em>matfile.mat</em>。注意存储对象需编码成字典形式才能存储`{'variable_name'：data}`。此处我们将矩阵存储为变量<em>elem</em>。
@@ -37,7 +37,7 @@ ls -lh matfile.mat
 
 ### 1.2: .h5 &#xd7; h5py
 Now let's come to hdf5, and try to store matrix in the format of .h5
-
+这里我们首先导入scipy并利用其中的[File](http://docs.h5py.org/en/stable/high/file.html)函数进行存储。存储的文件名为<em>matfile.mat</em>。注意存储对象需编码成字典形式才能存储`{'variable_name'：data}`。此处我们将矩阵存储为变量<em>elem</em>。
 ```python
 import h5py
 with h5py.File('h5file.h5', 'w') as hf:
