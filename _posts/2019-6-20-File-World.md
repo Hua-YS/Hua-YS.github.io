@@ -33,29 +33,32 @@ sio.savemat('matfile.mat', {'elem':a})
 ls -lh matfile.mat
 ```
 
-可以看到系统输出的文件尺寸为<strong>763M</strong>。接下来我们尝试用h5py来存储该矩阵。
+可以看到系统输出的文件大小为<strong>763M</strong>。接下来我们尝试用h5py来存储该矩阵。
 
 ### 1.2: .h5 &#xd7; h5py
 [HDF](https://zh.wikipedia.org/wiki/HDF)的全称是Hierarchical Data Format（层级数据格式）。这是一种专门用来存储和管理大型数据的文件格式。其最初是由美国国家超级计算应用中心（NCSA）开发，现在则由非营利社团HDF Group管理运营。在这里我们提到的.h5是该格式的第五代，也就是HDF5对应的文件名后缀。python中的相关工具包为h5py。
 
-这里我们首先导入h5py并以其中的[File](http://docs.h5py.org/en/stable/high/file.html) object对象来存储和管理数据。此处<em>h5file.h5</em>为待创建的存储文件。和使用savemt相同，这里我们需要先定义存储对象为<em>elem</em>, 再将矩阵以`data=`的形式赋予该变量。存
+这里我们首先导入h5py并以其中的[File](http://docs.h5py.org/en/stable/high/file.html) object对象来存储和管理数据。此处<em>h5file.h5</em>为待创建的存储文件。和使用savemt相同，这里我们需要先定义存储对象为<em>elem</em>, 再将矩阵以`data=`的形式赋予该变量
 ```python
 import h5py
 with h5py.File('h5file.h5', 'w') as hf:
     hf.create_dataset('elem', data=a)
 ```
 
+存储完毕后我们进入到数据存储位置并使用如下命令检查文件大小
 ```ccs
 ls -lh h5file.h5
 ```
 
-
-we get the size 763M with the command `ls -lh`
-
+文件大小依旧为<strong>763M</strong>!!某Y看到这个的时候内心是绝望的，难道说好的高效牛p都是骗人的吗？难道我的磁盘空间没救了吗？带着这个疑问，某Y又做了详细的功课并发现一个惊人的功能－－<strong>压缩</strong>。是的，h5py还提供了`compression`和`compression_opts`这两个变量可供设置。而在compression中，共有三种压缩方式可供选择：`gzip`，`lzf`，`szip`！这可不得了，我们赶紧试验下利用压缩后文件会有怎样的变化，这里我们选择文档中推荐的压缩方法gzip，同时`compression_opts`我们尝试了最高值9以及默认值4
 ```python
 with h5py.File('h5file2.h5', 'w') as hf:
     hf.create_dataset('elem', data=a, compression='gzip', compression_opts=9)
+    
+with h5py.File('h5file3.h5', 'w') as hf:
+    hf.create_dataset('elem', data=a, compression='gzip', compression_opts=4)
 ```
+
 check the size turn out 720M
 ```python
 with h5py.File('h5file3.h5', 'w') as hf:
