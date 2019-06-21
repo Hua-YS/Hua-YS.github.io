@@ -87,7 +87,6 @@ sio.savemat('matfile_com.mat', {'elem':a}, do_compression=True)
 压缩后的文件大小也为<strong>720M</strong>，与h5py压缩后的文件大小相同。
 
 ### 1.3: 耗时
-
 在压缩率相同的情况下，我们进一步比较了耗时。经测试，scipy耗时<strong>49.3</strong>秒，而h5py耗时<strong>39.9</strong>秒。
 
 不多说了，<strong>h5py用起来好嘛！</strong>
