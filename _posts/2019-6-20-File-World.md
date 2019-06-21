@@ -52,40 +52,34 @@ ls -lh h5file.h5
 
 文件大小依旧为<strong>763M</strong>!!某Y看到这个的时候内心是绝望的，难道说好的高效牛p都是骗人的吗？难道我的磁盘空间没救了吗？带着这个疑问，某Y又做了详细的功课并发现一个惊人的功能－－[<strong>压缩</strong>](http://docs.h5py.org/en/stable/high/dataset.html?highlight=compression)。是的，h5py还提供了`compression`和`compression_opts`这两个变量可供设置。而在compression中，共有三种压缩方式可供选择：`gzip`，`lzf`，`szip`！这可不得了，我们赶紧试验下利用压缩后文件会有怎样的变化，这里我们选择文档中推荐的压缩方法gzip，同时`compression_opts`我们尝试了最高值9以及默认值4
 ```python
-with h5py.File('h5file2.h5', 'w') as hf:
+with h5py.File('h5file_com9.h5', 'w') as hf:
     hf.create_dataset('elem', data=a, compression='gzip', compression_opts=9)
     
-with h5py.File('h5file3.h5', 'w') as hf:
+with h5py.File('h5file_com4.h5', 'w') as hf:
     hf.create_dataset('elem', data=a, compression='gzip', compression_opts=4)
 ```
 
-check the size turn out 720M
+压缩后的文件体积缩小了！两种压缩效率得到的文件均为<strong>720M</strong>！另外值得一提的是使用默认值4的时候，存储速度明显慢于最高值9。这时候可能有人就会质疑了：<strong>会不会有信息损失呢？</strong>为了回答这个疑问，我们继续做了下面实验，从存储文件中将我们的随机矩阵读入python并与原始矩阵对比
 ```python
-with h5py.File('h5file3.h5', 'w') as hf:
-    hf.create_dataset('elem', data=a, compression='gzip', compression_opts=4)
-```
-size 720M, and take longer time
-```python
-with h5py.File('h5file.h5', 'r') as hf:
-    a1 = np.array(hf['elem'])
-
-with h5py.File('h5file2.h5', 'r') as hf:
-    a2 = np.array(hf['elem'])
+with h5py.File('h5file_com9.h5', 'r') as hf:
+    a_com9 = np.array(hf['elem'])
     
-with h5py.File('h5file3.h5', 'r') as hf:
-    a3 = np.array(hf['elem'])
+with h5py.File('h5file_com4.h5', 'r') as hf:
+    a_com4 = np.array(hf['elem'])
 
-np.sum(a1-a), np.sum(a2-a), numpy(a3-a)
+np.sum(a_com9-a), np.sum(a_com4-a)
 ```
-(0.0, 0.0, 0.0)
 
-c = sio.loadmat('matfile.mat')
-a4 = c['elem1']
+对比结果是
+```python
+(0.0, 0.0)
+```
 
-np.sum(a4-a)
+不多说了，h5py用起来好嘛！
 
+等等，某Y突然想到，自己的数据集中，样本大部分为大型的稀疏矩阵，那么存储成.h5格式是不是会更节约空间呢？为此我们设计了第二个实验来验证我们的想法
 
-## Example 2: Huge sparse matrix
+## Experiment 2: 大型稀疏矩阵
 
 A [sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix) is a matrix with tons of 'holes'.
 dealing with sparse element
