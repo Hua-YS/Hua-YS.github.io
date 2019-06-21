@@ -2,7 +2,7 @@
 layout: post
 title: 大型矩阵究竟该如何存储?
 subtitle: .mat与.h5之间的抉择
-header-img: img/
+header-img: img/post-bg-h5py.jpg 
 ---
 
 ## 前言
