@@ -9,6 +9,9 @@ header-img: img/
 ```ccs
 Unable to create xxx: Disk quota exceeded
 ```
+然而也正是这句话促使了某Y认真研究起数据的存储格式以及不同存储格式之间的效率问题。
+
+这里某Y注重研究的是对于大型矩阵究竟该如何选择存储方式。
 
 ## Introduction
 
