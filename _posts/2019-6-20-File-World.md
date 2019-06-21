@@ -38,7 +38,7 @@ ls -lh matfile.mat
 ### 1.2: .h5 &#xd7; h5py
 [HDF](https://zh.wikipedia.org/wiki/HDF)的全称是Hierarchical Data Format（层级数据格式）。这是一种专门用来存储和管理大型数据的文件格式。其最初是由美国国家超级计算应用中心（NCSA）开发，现在则由非营利社团HDF Group管理运营。在这里我们提到的.h5是该格式的第五代，也就是HDF5对应的文件名后缀。python中的相关工具包为h5py。
 
-这里我们首先导入h5py并以其中的[File](http://docs.h5py.org/en/stable/high/file.html) object对象来存储和管理数据。此处<em>h5file.h5</em>为待创建的存储文件。和使用savemt相同，这里我们需要先定义存储对象为<em>elem<\em>, 再将矩阵以`data=`的形式赋予该变量。存
+这里我们首先导入h5py并以其中的[File](http://docs.h5py.org/en/stable/high/file.html) object对象来存储和管理数据。此处<em>h5file.h5</em>为待创建的存储文件。和使用savemt相同，这里我们需要先定义存储对象为<em>elem</em>, 再将矩阵以`data=`的形式赋予该变量。存
 ```python
 import h5py
 with h5py.File('h5file.h5', 'w') as hf:
