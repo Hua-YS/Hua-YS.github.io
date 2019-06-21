@@ -118,7 +118,7 @@ with h5py.File('h5file.h5', 'w') as hf:
     hf.create_dataset('elem', data=a, compression='gzip', compression_opts=9)
 ```
 
-最终生成大小为1.3M的.h5文件。虽然压缩效率低于scipy，但是相较于原文件，其大小也只有最初的0.17%！
+最终生成大小为<strong>1.3M</strong>的.h5文件。虽然压缩效率低于scipy，但是相较于原文件，其大小也只有最初的<strong>0.17%</strong>！
 
 ### 1.3: 耗时
 在存储大型稀疏矩阵时，scipy耗时<strong>8.5</strong>秒，而h5py耗时<strong>4.9</strong>秒。可见h5py虽然存储效率低于scipy，但是却有着较高的压缩速度。
@@ -130,6 +130,6 @@ with h5py.File('h5file.h5', 'w') as hf:
 * 如果你没有特别在乎的方面或者使用喜好的话，综合考虑可选择<strong>.h5</strong>格式进行存储（毕竟不是所有的情况都是全0矩阵）
 
 ## 后话
-某Y发现了这个后对之前创建的数据进行了压缩存储（.h5）。通过`du -lh`查看后，某Y惊喜地发现其中一个数据集从193G压缩到了<strong>16G</strong>，而另一个数据集则是从556G压缩到了<strong>48G</strong>！！！要知道服务器上分配的空间才1T！！！anyway，得救了:satisfied::satisfied::satisfied:
+某Y发现了这个后对之前创建的数据进行了压缩存储（.h5）。通过`du -lh`查看后，某Y惊喜地发现其中一个数据集从193G压缩到了<strong>16G</strong>，而另一个数据集则是从556G压缩到了<strong>48G</strong>！！！要知道服务器上分配的空间才1T！！！anyway，得救了:satisfied::satisfied::satisfied:当然还有很多存储特性没有在这里分析，比如h5py的group特性。写这篇博客的初衷是希望大家不要踩我踩过的坑，希望大家科研学习生活顺利～～～:sunny::sunny::sunny:
 
 
