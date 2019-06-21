@@ -50,7 +50,7 @@ with h5py.File('h5file.h5', 'w') as hf:
 ls -lh h5file.h5
 ```
 
-文件大小依旧为<strong>763M</strong>!!某Y看到这个的时候内心是绝望的，难道说好的高效牛p都是骗人的吗？难道我的磁盘空间没救了吗？带着这个疑问，某Y又做了详细的功课并发现一个惊人的功能－－<strong>压缩</strong>。是的，h5py还提供了`compression`和`compression_opts`这两个变量可供设置。而在compression中，共有三种压缩方式可供选择：`gzip`，`lzf`，`szip`！这可不得了，我们赶紧试验下利用压缩后文件会有怎样的变化，这里我们选择文档中推荐的压缩方法gzip，同时`compression_opts`我们尝试了最高值9以及默认值4
+文件大小依旧为<strong>763M</strong>!!某Y看到这个的时候内心是绝望的，难道说好的高效牛p都是骗人的吗？难道我的磁盘空间没救了吗？带着这个疑问，某Y又做了详细的功课并发现一个惊人的功能－－[<strong>压缩</strong>](http://docs.h5py.org/en/stable/high/dataset.html?highlight=compression)。是的，h5py还提供了`compression`和`compression_opts`这两个变量可供设置。而在compression中，共有三种压缩方式可供选择：`gzip`，`lzf`，`szip`！这可不得了，我们赶紧试验下利用压缩后文件会有怎样的变化，这里我们选择文档中推荐的压缩方法gzip，同时`compression_opts`我们尝试了最高值9以及默认值4
 ```python
 with h5py.File('h5file2.h5', 'w') as hf:
     hf.create_dataset('elem', data=a, compression='gzip', compression_opts=9)
