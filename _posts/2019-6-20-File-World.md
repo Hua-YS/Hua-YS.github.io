@@ -12,7 +12,7 @@ Unable to create xxx: Disk quota exceeded
 ```
 然而也正是这句话促使了某Y认真研究起数据的存储格式以及不同存储格式之间的效率问题。
 
-通常，由于MATLAB是科研工作者的常用工具，<strong>.mat</strong>也成了最常见的数据存储格式之一。然而，当遇到大型矩阵时，.mat究竟是不是一个最有效的存储格式呢？有没有什么更有效的存储格式呢？（结论可直接跳至[这里](## 结论)）下面某Y通过两组实验来对比下<strong>.mat</strong>和<strong>.h5</strong>的存储效率：
+通常，由于MATLAB是科研工作者的常用工具，<strong>.mat</strong>也成了最常见的数据存储格式之一。然而，当遇到大型矩阵时，.mat究竟是不是一个最有效的存储格式呢？有没有什么更有效的存储格式呢？（结论可直接跳至[这里](#conclusion)）下面某Y通过两组实验来对比下<strong>.mat</strong>和<strong>.h5</strong>的存储效率：
 
 ## Experiment 1: 大型随机矩阵
 在这个实验中， 我们着重比较的是两种不同存储格式对于大型随机矩阵的存储效率。首先，我们通过numpy创建一个10000 &#xd7; 10000的大型随机矩阵
@@ -123,7 +123,7 @@ with h5py.File('h5file.h5', 'w') as hf:
 ### 1.3: 耗时
 在存储大型稀疏矩阵时，scipy耗时<strong>8.5</strong>秒，而h5py耗时<strong>4.9</strong>秒。可见h5py虽然存储效率低于scipy，但是却有着较高的压缩速度。
 
-## 结论
+## <a name="conclusion"></a>结论
 通过上面的两组实验，我们简单总结如下：
 * 如果你只在乎压缩后文件的<strong>大小</strong>，请用<strong>.mat</strong>格式进行存储。不过一定要记得`do_compression=True`！
 * 如果你只在乎压缩文件的<strong>耗时</strong>，请用<strong>.h5</strong>格式进行存储，并将`compression_opts`设置为9
