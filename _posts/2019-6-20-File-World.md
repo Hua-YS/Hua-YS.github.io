@@ -5,6 +5,7 @@ subtitle: .mat与.h5之间的抉择
 header-img: img/
 ---
 
+## 前言
 最近，某Y在创建模型的训练数据集时遇到了一个非常头疼的问题－－生成的训练数据占用了过大的存储空间致使磁盘爆满！可能因为以前都是在体量较小的数据库上进行研究，故而第一次碰到这个问题的某Y是非常崩溃的。相信被下面这句话支配的恐惧感（尤其是在没有管理员权限的服务器上）很多和某Y一样的小白都深有感触吧（哭）
 ```ccs
 Unable to create xxx: Disk quota exceeded
@@ -87,15 +88,13 @@ sio.savemat('matfile_com.mat', {'elem':a}, do_compression=True)
 
 ### 1.3: 耗时
 
-在压缩率相同的情况下，我们进一步比较了耗时。经测试，scipy耗时49.3秒，而h5py耗时39.9秒。
+在压缩率相同的情况下，我们进一步比较了耗时。经测试，scipy耗时<strong>49.3</strong>秒，而h5py耗时<strong>39.9</strong>秒。
 
 不多说了，<strong>h5py用起来好嘛！</strong>
 
 
-
-
 ## Experiment 2: 大型稀疏矩阵
-某Y突然想到，自己的数据集中，样本大部分为大型的稀疏矩阵，那么不同存储方式是否会有不同的存储效率呢？为此我们设计了第二个实验来验证我们的想法。[稀疏矩阵](https://en.wikipedia.org/wiki/Sparse_matrix)指的是大部分元素为零的矩阵。因此在存储此类矩阵时，不同的存储方式通常都会采取一定的措施大幅度压缩文件体积。这里我们在极端情况，即矩阵元素全部为0，下比较不同的存储方式之。
+某Y突然想到，自己的数据集中，样本大部分为大型的稀疏矩阵，那么不同存储方式是否会有不同的存储效率呢？为此我们设计了第二个实验。[稀疏矩阵](https://en.wikipedia.org/wiki/Sparse_matrix)指的是大部分元素为零的矩阵。因此在存储此类矩阵时，不同的存储方式通常都会采取一定的措施大幅度压缩文件体积。这里我们在极端情况，即矩阵元素全部为0，下比较不同的存储方式之。
 ```python
 a = np.zeros((10000, 10000))
 ```
@@ -106,18 +105,34 @@ a = np.zeros((10000, 10000))
 sio.savemat('matfile.mat', {'elem':a})
 ```
 
-存储完成后，生成的文件大小为<strong>763M<strong>, 8.7s
-### 2.2: h5py &#xd7; .h5
+存储完成后，我可以看到未经压缩的文件大小为<strong>763M<strong>。接下来我们命令scipy进行压缩存储
 ```python
-with h5py.File('h5file.h5', 'w') as hf:
-    hf.create_dataset('elem', data=a)
+sio.savemat('matfile_com.mat', {'elem':a}, do_compression=True)
 ```
-3.9M
+
+进行压缩存储得到的.mat文件为<strong>760K！！！</strong>
+
+### 2.2: h5py &#xd7; .h5
+
+接下来我们用h5py进行压缩存储
 ```python
 with h5py.File('h5file.h5', 'w') as hf:
     hf.create_dataset('elem', data=a, compression='gzip', compression_opts=9)
 ```
-1.3M 5.1s
 
+最终生成大小为1.3M的.h5文件。虽然压缩效率低于scipy，但是相较于原文件，其大小也只有最初的0.17%！
+
+1.3M 5.1s
+### 1.3: 耗时
+在存储大型稀疏矩阵时，scipy耗时<strong>8.5</strong>秒，而h5py耗时<strong>4.9</strong>秒。可见h5py虽然存储效率低于scipy，但是却有着较高的压缩速度。
+
+## 结论
+通过上面的两组实验，我们简单总结如下：
+* 如果你只在乎压缩后文件的<strong>大小</strong>，请用<strong>.mat</strong>格式进行存储。不过一定要记得`do_compression=True`！
+* 如果你只在乎压缩文件的<strong>耗时</strong>，请用<strong>.h5</strong>格式进行存储，并将`compression_opts`设置为9
+* 如果你没有特别在乎的方面或者使用喜好的话，综合考虑可选择.h5格式进行存储（毕竟不是所有的情况都是全0矩阵）
+
+## 后话
+某Y发现了这个后对之前创建的数据进行了压缩存储（.h5）。通过`du -lh`查看后，某Y惊喜地发现其中一个数据集从193G压缩到了16G，而另一个数据集则是从556G压缩到了48G！！！要知道服务器上分配的空间才1T！！！anyway，得救了
 
 
