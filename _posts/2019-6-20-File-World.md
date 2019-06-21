@@ -33,7 +33,10 @@ sio.savemat('matfile.mat', {'elem':a})
 ls -lh matfile.mat
 ```
 
-可以看到系统输出的文件大小为<strong>763M</strong>。接下来我们尝试用h5py来存储该矩阵。
+可以看到系统输出的文件大小为<strong>763M</strong>。
+
+
+接下来我们尝试用h5py来存储该矩阵。
 
 ### 1.2: .h5 &#xd7; h5py
 [HDF](https://zh.wikipedia.org/wiki/HDF)的全称是Hierarchical Data Format（层级数据格式）。这是一种专门用来存储和管理大型数据的文件格式。其最初是由美国国家超级计算应用中心（NCSA）开发，现在则由非营利社团HDF Group管理运营。在这里我们提到的.h5是该格式的第五代，也就是HDF5对应的文件名后缀。python中的相关工具包为h5py。
@@ -75,21 +78,23 @@ np.sum(a_com4-a), np.sum(a_com9-a)
 (0.0, 0.0)
 ```
 
-不多说了，h5py用起来好嘛！
+不多说了，<strong>h5py用起来好嘛！</strong>
 
 等等，某Y突然想到，自己的数据集中，样本大部分为大型的稀疏矩阵，那么存储成.h5格式是不是会更节约空间呢？为此我们设计了第二个实验来验证我们的想法
 
 ## Experiment 2: 大型稀疏矩阵
-
-A [sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix) is a matrix with tons of 'holes'.
-dealing with sparse element
+[稀疏矩阵](https://en.wikipedia.org/wiki/Sparse_matrix)指的是大部分元素为零的矩阵。因此在存储此类矩阵时，不同的存储方式都会采取一定的措施大幅度压缩文件体积。这里我们在极端情况，即矩阵元素全部为0，上进行不同存储方式之间的比较
+```python
+a = np.zeros((10000, 10000))
+```
 
 ### 2.1: scipy &#xd7; .mat
+首先我们用scipy来对矩阵进行存储
 ```python
-a = np.zeros((1000, 1000), 'float32')
 sio.savemat('matfile.mat', {'elem':a})
 ```
-3.9M
+
+存储完成后，生成的文件大小为<strong>763M<strong>, 8.7s
 ### 2.2: h5py &#xd7; .h5
 ```python
 with h5py.File('h5file.h5', 'w') as hf:
@@ -97,10 +102,10 @@ with h5py.File('h5file.h5', 'w') as hf:
 ```
 3.9M
 ```python
-with h5py.File('h5file2.h5', 'w') as hf:
+with h5py.File('h5file.h5', 'w') as hf:
     hf.create_dataset('elem', data=a, compression='gzip', compression_opts=9)
 ```
-21K
+1.3M 5.1s
 
 
 
