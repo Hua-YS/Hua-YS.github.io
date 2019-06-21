@@ -22,13 +22,13 @@ a = np.random.rand(10000, 10000)
 随后，我们将分别利用python中提供的.mat存储工具包[scipy](https://www.scipy.org/)以及.h5的存储工具h5py来存储这个大型随机矩阵。
 
 ### 1.1: .mat &#xd7; scipy
-这里我们首先导入scipy并利用其中的[savemat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.savemat.html)函数进行存储。存储的文件名为matfile.mat。注意存储对象需编码成字典形式才能存储`{'variable_name'：data}`，此处我们将矩阵存储为变量elem
+这里我们首先导入scipy并利用其中的[savemat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.savemat.html)函数进行存储。存储的文件名为matfile.mat。注意存储对象需编码成字典形式才能存储`{'variable_name'：data}`。此处我们将矩阵存储为变量elem。
 ```python
 import scipy.io as sio
 sio.savemat('matfile.mat', {'elem':a})
 ```
 
-After the process completed, let's check the size of the produced .mat file
+存储完毕后我们进入到数据存储位置并使用如下命令检查文件大小
 ```ccs
 ls -lh matfile.mat
 ```
