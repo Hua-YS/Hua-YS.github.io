@@ -33,7 +33,7 @@ sio.savemat('matfile.mat', {'elem':a})
 ls -lh matfile.mat
 ```
 
-可以看到系统输出的文件尺寸为`763M`。接下来我们尝试用h5py来存储该矩阵。
+可以看到系统输出的文件尺寸为<strong>763M</strong>。接下来我们尝试用h5py来存储该矩阵。
 
 ### 1.2: .h5 &#xd7; h5py
 Now let's come to hdf5, and try to store matrix in the format of .h5
