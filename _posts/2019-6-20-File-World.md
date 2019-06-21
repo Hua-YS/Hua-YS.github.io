@@ -12,7 +12,7 @@ Unable to create xxx: Disk quota exceeded
 ```
 然而也正是这句话促使了某Y认真研究起数据的存储格式以及不同存储格式之间的效率问题。
 
-通常，由于MATLAB是科研工作者的常用工具，<strong>.mat</strong>也成了最常见的数据存储格式之一。然而，当遇到大型矩阵时，.mat究竟是不是一个最有效的存储格式呢？有没有什么更有效的存储格式呢？下面某Y通过两组实验来对比下<strong>.mat</strong>和<strong>.h5</strong>的存储效率：
+通常，由于MATLAB是科研工作者的常用工具，<strong>.mat</strong>也成了最常见的数据存储格式之一。然而，当遇到大型矩阵时，.mat究竟是不是一个最有效的存储格式呢？有没有什么更有效的存储格式呢？（结论可直接跳至[这里](## 结论)）下面某Y通过两组实验来对比下<strong>.mat</strong>和<strong>.h5</strong>的存储效率：
 
 ## Experiment 1: 大型随机矩阵
 在这个实验中， 我们着重比较的是两种不同存储格式对于大型随机矩阵的存储效率。首先，我们通过numpy创建一个10000 &#xd7; 10000的大型随机矩阵
@@ -104,7 +104,7 @@ a = np.zeros((10000, 10000))
 sio.savemat('matfile.mat', {'elem':a})
 ```
 
-存储完成后，我可以看到未经压缩的文件大小为<strong>763M<strong>。接下来我们命令scipy进行压缩存储
+存储完成后，我可以看到未经压缩的文件大小为<strong>763M</strong>。接下来我们命令scipy进行压缩存储
 ```python
 sio.savemat('matfile_com.mat', {'elem':a}, do_compression=True)
 ```
