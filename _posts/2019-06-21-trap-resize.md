@@ -13,12 +13,12 @@ tags: Data_Processing
 cv2.resize(x, (h/2, w/2, c))
 ```
 
-<strong>报错！</strong>呀哈，果然不能直接用（然而并不是这样的）。于是某Y在网上搜索后找到了这样一个看着非常相似的函数<strong>np.resize</strong>！于是赶紧使用看看
+<strong>报错！</strong>呀哈，果然不能直接用（[然而并不是这样的](#cv2resize)）。于是某Y在网上搜索后找到了这样一个看着非常相似的函数<strong>np.resize</strong>！于是赶紧使用看看
 ```python
 np.resize(x, (h/2, w/2, c))
 ```
 
-<strong>没有报错！而且size也确实按照预期进行改变了！</strong>由于矩阵较大且每个元素都是浮点小数难以检查，某Y就直接用了这个函数生成的数据进行网络训练。然而训练的结果一塌糊涂！一盆冷水直接浇醒了某Y，也使得某Y认真检视起这两个函数并做了以下的实验。
+<strong>没有报错！而且size也确实按照预期进行改变了！</strong>由于矩阵较大且每个元素都是浮点小数难以检查，某Y就直接用了这个函数生成的数据进行网络训练。然而训练的结果一塌糊涂！一盆冷水直接浇醒了某Y，也使得某Y认真检视起这两个函数并做了以下的实验。结论可跳至[这里](#conclusion)。
 
 ## Experiment 1: np.resize到底干了什么？
 为了清楚地看到每个元素的数值变化，我们先利用numpy创建了如下测试矩阵
@@ -109,7 +109,7 @@ array([[[1, 1, 1, 1, 1, 1],
 
 恩，只是单纯的<strong>copy</strong>和<strong>delete</strong>。为什么会有这么奇怪的函数！那么问题回来了，该怎么实现利用双线性插值沿着矩阵的spatial维度缩放呢？
 
-## Experiment 2: 还是该用cv2.resize！
+## <a name="cv2resize"></a>Experiment 2: 还是该用cv2.resize！
 对！还是该用<strong>cv2.resize！</strong>只需要把愚蠢的代码改正即可（第一行不加会报错！）
 ```python
 a = np.float32(a)
@@ -144,7 +144,7 @@ array([[1.   , 1.25 , 1.75 , 2.25 , 2.75 , 3.25 , 3.75 , 4.   ],
 
 明显可以看到，c是由a差值得到！
 
-## 结论
+## <a name="conclusion"></a>结论
 cv2.resize还是很厉害的！但是在使用时一定要注意以下两点：
 * 输入的矩阵类别需符合cv2的要求（e.g.，float32）
 * 变换后的长宽对应原始的宽长
