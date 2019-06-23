@@ -30,9 +30,13 @@ a = np.repeat(a, 6, axis=-1)
 
 随后利用np.shape可以得到该矩阵各个维度的信息
 ```python
-w, w, c = np.shape(a)
+h, w, c = np.shape(a)
 print h, w, c
 ```
+
+可以看到这是一个2&#xd7;4&#xd7;6的矩阵
+
+
 
 
 
