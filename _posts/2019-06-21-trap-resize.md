@@ -4,7 +4,7 @@ title: resize的陷阱
 subtitle: np.resize v.s. cv2.resize
 header-img: img/post-bg-trap.jpg 
 catalog: true
-tags: Processing
+tags: Data_Processing
 ---
 
 ## 前言
@@ -18,20 +18,21 @@ cv2.resize(x, (h/2, w/2, c))
 np.resize(x, (h/2, w/2, c))
 ```
 
-没有报错！而且size也确实按照预期进行改变了！由于矩阵较大且每个元素都是浮点小数难以检查，某Y就直接用了这个函数生成的数据进行网络训练。然而训练的结果一塌糊涂！一盆冷水直接浇醒了某Y，也使得某Y认真检视起这两个函数并做了以下的实验
+没有报错！而且size也确实按照预期进行改变了！由于矩阵较大且每个元素都是浮点小数难以检查，某Y就直接用了这个函数生成的数据进行网络训练。然而训练的结果一塌糊涂！一盆冷水直接浇醒了某Y，也使得某Y认真检视起这两个函数并做了以下的实验。
 
 ## Experiment 1: np.resize到底干了什么？
-在这个实验中， 我们着重比较的是两种不同存储格式对于大型随机矩阵的存储效率。首先，我们通过numpy创建一个10000 &#xd7; 10000的大型随机矩阵
+为了清楚地看到每个元素的数值变化，我们先利用numpy创建了如下测试矩阵
 ```python
-import numpy as np
-a = np.random.rand(10000, 10000)
+a = np.array([[1, 2, 3, 4], [6, 5, 4, 3]])
+a = a[:, :, np.newaxis]
+a = np.repeat(a, 6, axis=-1)
 ```
-随后，我们将分别利用python中提供的.mat存储工具包[scipy](https://www.scipy.org/)以及.h5的存储工具[h5py](https://www.h5py.org/)来存储这个大型随机矩阵。
 
-### 1.1: .mat &#xd7; scipy
-这里我们首先导入scipy并利用其中的[savemat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.savemat.html)函数进行存储。存储的文件名为<em>matfile.mat</em>。注意存储对象需编码成字典形式才能存储`{'variable_name'：data}`。此处我们将矩阵存储为变量<em>elem</em>
+随后利用np.shape可以得到该矩阵各个维度的信息
 ```python
-import scipy.io as sio
-sio.savemat('matfile.mat', {'elem':a})
+w, w, c = np.shape(a)
+print h, w, c
 ```
+
+
 
