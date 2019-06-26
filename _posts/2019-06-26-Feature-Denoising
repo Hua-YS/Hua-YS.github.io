@@ -8,5 +8,12 @@ tags: CVPR19 Denoising
 ---
 
 ## 前言
-分享一篇来自自何恺明大神组的CVPR2019的文章。这篇文章讲的是通过feature去噪来提高网络的对抗adversarial attack时的鲁棒性。
+今天某Y想分享一篇来自自何恺明大神组的CVPR2019的文章，并通过该文章谈下关于如何讲好一个故事的个人感受。
+
+
+
+这篇文章讲的是通过feature去噪来提高网络的对抗adversarial attack时的鲁棒性。
+
+
+
 
