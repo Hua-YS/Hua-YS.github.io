@@ -1,2 +1,12 @@
+---
+layout: post
+title: [CVPR2019] Feature Denoising for Improving Adversarial Robustness 后感
+subtitle: 浅谈怎么讲好一个故事
+header-img: img/post-bg-trap.jpg 
+catalog: true
+tags: CVPR19 Denoising
+---
 
+## 前言
+分享一篇来自自何恺明大神组的CVPR2019的文章。这篇文章讲的是通过feature去噪来提高网络的对抗adversarial attack时的鲁棒性。
 
