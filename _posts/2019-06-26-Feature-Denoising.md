@@ -41,8 +41,6 @@ tags: CVPR19 Denoising
 Liao et al. 提出利用high-level feature来训练学习如何对图像进行像素去噪。与其不同的是，该文章在feature上进行去噪。
 Guo et al. 通过不可导的图像预处理来进行图像变换，比如整体方差最小。该方法易遭受white-box的攻击。
 
-
-
 ## Feature Denoising
 
 
