@@ -42,7 +42,7 @@ tags: CVPR19 Denoising
 
 #### 像素去噪
 Liao et al. 提出利用high-level feature来训练学习如何对图像进行像素去噪。与其不同的是，该文章在feature上进行去噪。
-Guo et al. 通过不可导的图像预处理来进行图像变换，比如整体方差最小。该方法易遭受white-box的攻击。
+Guo et al. 通过不可导的图像预处理来进行图像变换，比如整体方差最小。该方法易遭受有针对性的white-box的攻击。
 
 ## Feature Denoising
 Feature denoising module的整体结构如下图
@@ -54,7 +54,11 @@ Feature denoising module的整体结构如下图
 * residual connection：考虑到去噪的过程中，原始信号中的<strong>true signal也会受到影响</strong>，作者提出利用该结构来<strong>保留原始信号</strong>。
 * 1×1 convolution：那么到底该在原始信号的基础上进行<strong>何种程度</strong>的去噪呢？作者提出利用这样一个1×1的卷积来让网络自行学习。
 
-
+针对denoising operation部分，作者在本文中实验比较了四种filter
+* non-local means filter
+* bilateral filter
+* mean filter
+* median filter
 
 
 
