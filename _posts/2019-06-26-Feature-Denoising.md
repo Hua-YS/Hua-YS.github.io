@@ -47,7 +47,7 @@ Feature denoising module的整体结构如下图
 该module有三个重要的组成部分：
 * denoising operation：对signal进行去噪处理
 * residual connection：考虑到去噪的过程中，原始信号中的true signal部分也会受到影响，作者提出利用该结构来保留原始信号。
-* 1x1 convolution：那么到底该在原始信号的基础上进行何种程度的去噪呢？作者提出利用这样一个1x1的卷积来让网络自行学习。
+* 1×1 convolution：那么到底该在原始信号的基础上进行何种程度的去噪呢？作者提出利用这样一个1×1的卷积来让网络自行学习。
 
 
 
