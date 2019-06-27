@@ -15,7 +15,7 @@ tags: CVPR19 Denoising
 
 <blockquote>对抗攻击是指对图像加入小幅度的扰动，来诱使判别器对其作出错误的判断。值得注意的是，此处的<em>小幅度</em>是指人眼难以觉察到的程度。</blockquote>
 
-<img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-pg-fd-example.jpg" alt="drawing" width="240"/>
+<img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-pg-fd-example.jpg" alt="drawing" aligh=center width="400"/>
 
 通过下图我们可以看到，即便是在人眼感受上很小的扰动，依然会致使网络做出错误的判断（将“电子钟”误检成“加热器”）。这就不得不使得人们开始思考:
 
