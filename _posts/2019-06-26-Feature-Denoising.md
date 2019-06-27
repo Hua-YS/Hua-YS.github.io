@@ -74,6 +74,7 @@ Feature denoising module的整体结构如下图
 作者在这里指出，一个 adversarial trained 模型在clean图像上的分类准确度要<strong>低于</strong>一个 clean trained 模型。
 
 <blockquote>某Y观点：这一点非常有趣。因为按理来说一个学会去噪的模型应该可以更好的识别clean图像，毕竟在 data augmentation 中有一项就是增加随机噪声（训练时既有噪声图像也有原图像）来提高网络学习时的鲁棒性。但似乎网络学会了鉴别noisy图像后就忘记了如何识别clean图像。<br>
+  <p></p>
   某Y同事观点：一切都是过拟合！哈哈哈，再贴切不过😆</blockquote>
 
 
