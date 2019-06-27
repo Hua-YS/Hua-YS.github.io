@@ -8,7 +8,7 @@ tags: CVPR19 Denoising
 ---
 
 ## 前言
-今天某Y想分享一篇来自自何恺明大神组的CVPR2019的文章，并通过该文章谈下关于如何讲好一个故事的个人感受。在故事线上，某Y做了一些调整以方便讲述。
+今天某Y想分享一篇来自自何恺明大神组的CVPR2019的文章，并通过该文章谈下关于如何讲好一个故事的个人[感受](#think)。在故事线上，某Y做了一些调整以方便讲述。
 
 ## 背景介绍
 这篇文章首先描述了一个很有意思的现象:在遭受<strong>对抗攻击（adversarial attack）</strong> 时，卷积神经网络（CNN）会对图像的理解产生偏差。
@@ -80,16 +80,17 @@ Feature denoising module的整体结构如下图
   <p></p>
   某Y同事观点：一切都是过拟合！哈哈哈，再贴切不过😆</blockquote>
 
-## 感想
+## <a name="think"></a>感想
 纵观下来，这篇文章的创新性实在有限，其denoising module的实质就是learning residual，只是对学习residual的方式加了一定的约束，例如denoising operation。<strong>然而，</strong>这确实一篇CVPR文章！为什么？原因其实很简单，就是这篇文章讲了一个很<strong>fancy的故事</strong>！
 
 * 首先作者发现了一个很有意思的现象，并通过抓人眼球的视觉实例直截了当的让读者感受到这个现象（pixel level noise很小，但是feature level noise很大）。
 * 在此基础上，作者进一步分析阐述为什么会有这种现象（随着网络的加深，noise越滚越大）。有理有据！
 * 针对这种现象，作者指出现有工作的不足（仅仅在pixel level去噪是不够的），并提出自己的feature denoising module。
 * 进一步这对其中的各部分进行讨论（不同filter的解释）
+* 训练方法上的特别之处（adversarial training）
 * 大量的试验×完美的结果×有趣分析
 
-
+前面抓人眼球，中间踏踏实实，后面完美收官。于是一个好故事就诞生了！😱
 
 
 
