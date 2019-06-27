@@ -134,25 +134,3 @@ with h5py.File('h5file.h5', 'w') as hf:
 
 ## 后话
 某Y发现了这个后对之前创建的数据进行了压缩存储（.h5）。通过`du -lh`查看后，某Y惊喜地发现其中一个数据集从193G压缩到了<strong>16G</strong>，而另一个数据集则是从556G压缩到了<strong>48G</strong>！！！要知道服务器上分配的空间才1T！！！anyway，得救了😆😆😆;当然还有很多存储特性没有在这里分析，比如h5py的group特性。写这篇博客的初衷是希望大家不要踩我踩过的坑，希望大家科研学习生活顺利😉～～～
-
-<!-- Gitalk 评论 start  -->
-{% if site.gitalk.enable %}
-<!-- Gitalk link  -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
-
-<div id="gitalk-container"></div>
-    <script type="text/javascript">
-    var gitalk = new Gitalk({
-    clientID: '{{site.gitalk.clientID}}',
-    clientSecret: '{{site.gitalk.clientSecret}}',
-    repo: '{{site.gitalk.repo}}',
-    owner: '{{site.gitalk.owner}}',
-    admin: ['{{site.gitalk.admin}}'],
-    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
-    id: 'about',
-    });
-    gitalk.render('gitalk-container');
-</script>
-{% endif %}
-<!-- Gitalk end -->
