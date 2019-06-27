@@ -113,11 +113,11 @@ header-img: "img/home-bg.jpg"
 <div id="gitalk-container"></div>
     <script type="text/javascript">
     var gitalk = new Gitalk({
-    clientID: 'cf782b6cf771f232c0ed',
-    clientSecret: 'b10b6a842421047d9755200ec122cc5bfa5b3a98',
-    repo: 'https://github.com/Hua-YS/Blog-Comments',
-    owner: 'Hua-YS',
-    admin: ['Hua-YS'],
+    clientID: '{{site.gitalk.clientID}}',
+    clientSecret: '{{site.gitalk.clientSecret}}',
+    repo: '{{site.gitalk.repo}}',
+    owner: '{{site.gitalk.owner}}',
+    admin: ['{{site.gitalk.admin}}'],
     distractionFreeMode: {{site.gitalk.distractionFreeMode}},
     id: 'about',
     });
