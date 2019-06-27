@@ -83,8 +83,8 @@ Feature denoising module的整体结构如下图
 ## 感想
 纵观下来，这篇文章的创新性实在有限，其denoising module的实质就是learning residual，只是对学习residual的方式加了一定的约束，例如denoising operation。<strong>然而，</strong>这确实一篇CVPR文章！为什么？原因其实很简单，就是这篇文章讲了一个很<strong>fancy的故事<\strong>！
 
-+ 首先作者发现了一个很有意思的现象，并通过抓人眼球的视觉实例直截了当的让读者感受到这个现象（pixel level noise很小，但是feature level noise很大）。
-+ 在此基础上，作者进一步分析阐述为什么会有这种现象（随着网络的加深，noise越滚越大）。针对这种现象
+- 首先作者发现了一个很有意思的现象，并通过抓人眼球的视觉实例直截了当的让读者感受到这个现象（pixel level noise很小，但是feature level noise很大）。
+- 在此基础上，作者进一步分析阐述为什么会有这种现象（随着网络的加深，noise越滚越大）。针对这种现象
 
 
 
