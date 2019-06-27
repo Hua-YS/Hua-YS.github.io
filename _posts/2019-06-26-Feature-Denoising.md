@@ -24,7 +24,7 @@ tags: CVPR19 Denoising
 
 为了更清楚的描绘这个现象，作者给了更多的对抗攻击干扰网络特征提取的例子。其中最右的示例尤为明显，非常少量的噪声严重干扰了特征的提取。
 
-<img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-pg-fd-example-ext.jpg">
+<img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-bg-fd-example-ext.jpg">
 
 针对这样的现象，作者对feature noise进行了分析，并指出
 * 对扰动的约束仅在图像的pixel级别存在，<strong>而在feature层面上并没有任何的约束</strong>。
