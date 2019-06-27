@@ -31,6 +31,18 @@ tags: CVPR19 Denoising
 
 为了解决这个问题，作者在文章中提出在feature 上进行denoising的想法，并设计了相应的denoising 模块。
 
+## 相关工作
+这篇文章并不是第一个针对提高模型对抗稳定性的工作，在此之前已有一些相关的工作。常见的两种提高模型对抗稳定性的手段是对抗训练和像素去噪。
+
+### 对抗训练
+一种常见的对抗训练策略是ALP（Adversarial Logit Paring）。该策略旨在训练模型对同一张图像的clean与“noisy”两种版本做出相似的预测。
+
+### 像素去噪
+Liao et al. 提出利用high-level feature来训练学习如何对图像进行像素去噪。与其不同的是，该文章在feature上进行去噪。
+Guo et al. 通过不可导的图像预处理来进行图像变换，比如整体方差最小。该方法易遭受white-box的攻击。
+
+
+
 ## Feature Denoising
 
 
