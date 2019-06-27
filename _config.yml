@@ -62,8 +62,8 @@ kramdown:
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
+  clientID: cf782b6cf771f232c0ed                            #生成的clientID
+  clientSecret: b10b6a842421047d9755200ec122cc5bfa5b3a98    #生成的clientSecret
   repo: hua-ys.github.io    #仓库名称
   owner: hua-ys    #github用户名
   admin: hua-ys
