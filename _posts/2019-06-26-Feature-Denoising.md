@@ -60,22 +60,33 @@ Feature denoising module的整体结构如下图
 * mean filter
 * median filter
 
-## 实验
-作者通过与baseline的对比验证了加入 feature denoising module 可以更好地对抗攻击。实验中有<strong>两个比较有意思的结果</strong>在这里分析下
+## Adversarial Training
+作者利用PGD attacker生成了扰动的图像，并在这些图像上进行训练。
+
+## 实验&结论
+作者通过与baseline的对比验证了加入feature denoising module可以更好地对抗攻击。实验中有<strong>两个比较有意思的结果</strong>在这里分析下
 
 #### 1) residual connection必不可少
 作者在ablation实验中尝试着去掉module中的某一个要素来观察不同要素对提高网络鲁棒性的影响。下表中给出了实验结果
 
 <div align=center><img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-fd-ablation.jpg" alt="drawing" aligh=center width="600"/></div>
 
-从这里可以看出，去掉 feature denoising module 和 1×1 convolution 都会降低网络的表现。而去掉 residual connection 则会导致<strong>网络无法训练！</strong>
+从这里可以看出，去掉feature denoising module和 1×1 convolution 都会降低网络的表现。而去掉residual connection则会导致<strong>网络无法训练！</strong>
 
 #### 2) adversarial trained model for clean image
-作者在这里指出，一个 adversarial trained 模型在clean图像上的分类准确度要<strong>低于</strong>一个 clean trained 模型。
+作者在这里指出，一个adversarial trained模型在clean图像上的分类准确度要<strong>低于</strong>一个clean trained模型。
 
-<blockquote>某Y观点：这一点非常有趣。因为按理来说一个学会去噪的模型应该可以更好的识别clean图像，毕竟在 data augmentation 中有一项就是增加随机噪声（训练时既有噪声图像也有原图像）来提高网络学习时的鲁棒性。但似乎网络学会了鉴别noisy图像后就忘记了如何识别clean图像。<br>
+<blockquote>某Y观点：这一点非常有趣。因为按理来说一个学会去噪的模型应该可以更好的识别clean图像，毕竟在data augmentation中有一项就是增加随机噪声（训练时既有噪声图像也有原图像）来提高网络学习时的鲁棒性。但似乎网络学会了鉴别noisy图像后就忘记了如何识别clean图像。<br>
   <p></p>
   某Y同事观点：一切都是过拟合！哈哈哈，再贴切不过😆</blockquote>
+
+## 感想
+纵观下来，这篇文章的创新性实在有限，其denoising module的实质就是learning residual，只是对学习residual的方式加了一定的约束，例如denoising operation。<strong>然而，</strong>这确实一篇CVPR文章！为什么？原因其实很简单，就是这篇文章讲了一个很<strong>fancy的故事<\strong>！
+
++ 首先作者发现了一个很有意思的现象，并通过抓人眼球的视觉实例直截了当的让读者感受到这个现象（pixel level noise很小，但是feature level noise很大）。
++ 在此基础上，作者进一步分析阐述为什么会有这种现象（随着网络的加深，noise越滚越大）。针对这种现象
+
+
 
 
 
