@@ -69,7 +69,7 @@ Feature denoising module的整体结构如下图
 #### 1) residual connection必不可少
 作者在ablation实验中尝试着去掉module中的某一个要素来观察不同要素对提高网络鲁棒性的影响。下表中给出了实验结果
 
-<div align=center><img src="/img/post-fd-ablation.jpg" width="600"/></div>
+<img src="/img/post-fd-ablation.jpg" width="600"/>
 
 从这里可以看出，去掉feature denoising module和 1×1 convolution 都会降低网络的表现。而去掉residual connection则会导致<strong>网络无法训练！</strong>
 
