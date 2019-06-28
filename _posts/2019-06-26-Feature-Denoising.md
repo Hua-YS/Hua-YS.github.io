@@ -14,7 +14,7 @@ tags: CVPR19 Denoising
 这篇文章首先描述了一个很有意思的现象:在遭受<strong>对抗攻击（adversarial attack）</strong> 时，卷积神经网络（CNN）会对图像的理解产生偏差。
 
 <blockquote>对抗攻击是指对图像加入小幅度的扰动，来诱使判别器对其作出错误的判断。值得注意的是，此处的<em>小幅度</em>是指人眼难以觉察到的程度。</blockquote>
-<div align=center><img src="img/post-fd-example.jpg" alt="drawing" aligh=center width="400"/></div>
+<div align=center><img src="/img/post-fd-example.jpg" alt="drawing" aligh=center width="400"/></div>
 <div align=center><img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-fd-example.jpg" alt="drawing" aligh=center width="400"/></div>
 
 通过下图我们可以看到，即便是在人眼感受上很小的扰动，依然会致使网络做出错误的判断（将“电子钟”误检成“加热器”）。这就不得不使得人们开始思考:
