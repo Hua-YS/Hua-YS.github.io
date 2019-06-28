@@ -14,8 +14,8 @@ tags: CVPR19 Denoising
 这篇文章首先描述了一个很有意思的现象:在遭受<strong>对抗攻击（adversarial attack）</strong> 时，卷积神经网络（CNN）会对图像的理解产生偏差。
 
 <blockquote>对抗攻击是指对图像加入小幅度的扰动，来诱使判别器对其作出错误的判断。值得注意的是，此处的<em>小幅度</em>是指人眼难以觉察到的程度。</blockquote>
+
 <div align=center><img src="/img/post-fd-example.jpg" alt="drawing" aligh=center width="400"/></div>
-<div align=center><img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-fd-example.jpg" alt="drawing" aligh=center width="400"/></div>
 
 通过下图我们可以看到，即便是在人眼感受上很小的扰动，依然会致使网络做出错误的判断（将“电子钟”误检成“加热器”）。这就不得不使得人们开始思考:
 * 现实世界中可能存在这样的潜在<strong>威胁</strong>。（想象一个基于DL的人脸识别系统能够轻易地被戏弄。阔怕）
@@ -24,7 +24,7 @@ tags: CVPR19 Denoising
 
 为了更清楚的描绘这个现象，作者给了更多的对抗攻击干扰网络特征提取的例子。其中最右的示例尤为明显，非常少量的噪声严重干扰了特征的提取。
 
-<img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-fd-example-ext.jpg">
+<img src="/img/post-fd-example-ext.jpg">
 
 针对这样的现象，作者对feature noise进行了分析，并指出
 * 对扰动的约束仅在图像的pixel级别存在，<strong>而在feature层面上并没有任何的约束</strong>。
@@ -47,7 +47,7 @@ Guo et al. 通过不可导的图像预处理来进行图像变换，比如整体
 ## Feature Denoising
 Feature denoising module的整体结构如下图
 
-<div align=center><img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-fd-module.jpg" alt="drawing" aligh=center width="200"/></div>
+<div align=center><img src="/img/post-fd-module.jpg" alt="drawing" aligh=center width="200"/></div>
 
 该module有三个重要的组成部分：
 * denoising operation：对signal进行<strong>去噪</strong>处理
@@ -69,7 +69,7 @@ Feature denoising module的整体结构如下图
 #### 1) residual connection必不可少
 作者在ablation实验中尝试着去掉module中的某一个要素来观察不同要素对提高网络鲁棒性的影响。下表中给出了实验结果
 
-<div align=center><img src="https://github.com/Hua-YS/Hua-YS.github.io/blob/master/img/post-fd-ablation.jpg" alt="drawing" aligh=center width="600"/></div>
+<div align=center><img src="/img/post-fd-ablation.jpg" alt="drawing" aligh=center width="600"/></div>
 
 从这里可以看出，去掉feature denoising module和 1×1 convolution 都会降低网络的表现。而去掉residual connection则会导致<strong>网络无法训练！</strong>
 
