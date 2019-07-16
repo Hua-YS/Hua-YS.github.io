@@ -40,7 +40,7 @@ tags: Writing
 
 此时再上传arxiv，我们就可以顺利通过文件检查😄😄😄
 
-# pgfplots包引起的谜之bug
+## pgfplots包引起的谜之bug
 
 之所以称这个是谜之bug，是因为在overleaf上可以顺利加载pgfplots包且编译顺利，但是在arxiv上则会失败。引起的原因大概是arxiv上的tex编译系统与overleaf的latex编译系统的存在兼容性问题。
 
