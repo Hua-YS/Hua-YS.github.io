@@ -25,13 +25,33 @@ tags: Writing
 然而将overleaf上的文件直接打包下载再上传arxiv的时候会报出如下错误
 <img src="/img/post-oa-bbl-error.jpg" width="600"/>
 
-解决方案很简单，这里需要利用到overleaf提供的</strong>submit<strong>功能，替你编译并生成```.bbl```文件。submit界面中选择arxiv并download
+解决方案很简单，这里需要利用到overleaf提供的<strong>submit</strong>功能，替你编译并生成```.bbl```文件。submit界面中选择arxiv并```Download project ZIP with submission files (e.g. .bbl)```。界面如下所示
+<img src="/img/post-oa-arxiv-submit.jpg" width="600"/>
+
+此时一切大功告成！！？？才怪！接下来是<strong>最重要的两步</strong>！！
+
+* 将```.bbl```文件的名称改为```.bib```文件的名称
+* 在正文中将上面的引用文献代码改成如下所示！
 ```ccs
 \input{reference.bbl}
 \bibliographystyle{IEEEtran}
 \bibliography{reference}
 ```
-  
-\usepackage{pgfplots}
+
+此时再上传arxiv，我们就可以顺利通过文件检查😄😄😄
+
+# pgfplots包引起的谜之bug
+
+之所以称这个是谜之bug，是因为在overleaf上可以顺利加载pgfplots包且编译顺利，但是在arxiv上则会失败。引起的原因大概是arxiv上的tex编译系统与overleaf的latex编译系统的存在兼容性问题。
+
+话不多说，解决方案是这样的：在调用pgfplots包之后，```\begin{document}```之前需添加下面这段命令，注意！<strong>arxiv只支持到1.14版本</strong>！
+```
 \pgfplotsset{compat=1.14}
+```
+
+此后bug顺利解决！😆😆😆
+
+## 小结
+希望某Y在这的踩坑总结可以帮助到被坑到的大家~祝大家paper都能被顺利接收~😉😉😉
+
 
