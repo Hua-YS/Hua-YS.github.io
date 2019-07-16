@@ -15,7 +15,7 @@ tags: Writing
 
 这个问题通常是由<strong>图像</strong>大小引起的（文字档案通常size很小）。为了解决这个问题，最简单的方法就是利用在线图像工具进行压缩，尤其是tif，jpg的图像，压缩率可以高达<strong>80%</strong>！这里推荐一个常用的[在线工具](https://compressjpeg.com/zh/)，可以很方便地<strong>批量</strong>处理以及下载。另外他们家的其他各类转换工具也很好用，切完全免费！
 
-## bbl文件缺失
+## .bbl文件缺失
 使用overleaf的过程中，参考文献通常会写在```.bib```文件里。再在正文中用如下命令调用
 ```ccs
 \bibliographystyle{IEEEtran}
