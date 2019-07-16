@@ -22,11 +22,16 @@ tags: Writing
 \bibliography{reference.bib}
 ```
 
-然而将overleaf上的文件直接打包下载再上传arxiv的
+然而将overleaf上的文件直接打包下载再上传arxiv的时候会报出如下错误
+<img src="/img/post-oa-bbl-error.jpg" width="600"/>
 
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.14}
-
+解决方案很简单，这里需要利用到overleaf提供的</strong>submit<strong>功能，替你编译并生成```.bbl```文件。submit界面中选择arxiv并download
+```ccs
 \input{reference.bbl}
 \bibliographystyle{IEEEtran}
 \bibliography{reference}
+```
+  
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+
