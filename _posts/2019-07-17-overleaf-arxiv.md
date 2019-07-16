@@ -23,10 +23,10 @@ tags: Writing
 ```
 
 然而将overleaf上的文件直接打包下载再上传arxiv的时候会报出如下错误
-<img src="/img/post-oa-bbl-error.jpg" width="600"/>
+<img src="/img/post-oa-bbl-error.jpg" width="700"/>
 
 解决方案很简单，这里需要利用到overleaf提供的<strong>submit</strong>功能，替你编译并生成```.bbl```文件。submit界面中选择arxiv并```Download project ZIP with submission files (e.g. .bbl)```。界面如下所示
-<img src="/img/post-oa-arxiv-submit.jpg" width="600"/>
+<img src="/img/post-oa-overleaf-submit.jpg" width="700"/>
 
 此时一切大功告成！！？？才怪！接下来是<strong>最重要的两步</strong>！！
 
