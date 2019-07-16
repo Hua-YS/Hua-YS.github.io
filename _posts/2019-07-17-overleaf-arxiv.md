@@ -1,10 +1,10 @@
 ---
 layout: post
-title: overleaf to arxiv 的踩坑细节
-subtitle: bbl & pgfplots
+title: overleaf to arxiv的踩坑细节
+subtitle: 搞定bbl & pgfplots
 header-img: img/post-bg-trap.jpg 
 catalog: true
-tags: Data
+tags: Writing
 ---
 
 ## 前言
